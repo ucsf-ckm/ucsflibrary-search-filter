@@ -11,9 +11,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-add_filter('relevanssi_excerpt_content', 'ucsflibrary_search_filter_excerpt_content');
+// @link https://www.relevanssi.com/user-manual/filter-hooks/
+add_filter('relevanssi_pre_excerpt_content', 'ucsflibrary_search_filter_excerpt_content');
 
 function ucsflibrary_search_filter_excerpt_content($content, $post = null, $query = null) {
+
     if (false === strpos($content, '<pre><code>')) {
         return $content;
     }
