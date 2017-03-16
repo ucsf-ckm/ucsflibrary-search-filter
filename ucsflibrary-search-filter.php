@@ -14,6 +14,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // @link https://www.relevanssi.com/user-manual/filter-hooks/
 add_filter('relevanssi_pre_excerpt_content', 'ucsflibrary_search_filter_excerpt_content');
 
+/**
+ * Callback function, invoked when the <code>relevanssi_pre_excerpt_content</code> filter-hook fires.
+ * 
+ * This finds and decodes any markup that Elementor widgets may embed in a given post content,
+ * then puts the decoded markup back into place, without its <code>&lt;pre&gt;&ltcode&gt;<code> bookends.
+ * Pre-processing the given content in such a way is necessary so that Relevanssi can strip all markup from it
+ * when creating search result excerpts.
+ *
+ * @param string $content The post content to filter
+ * @param \WP_Post $post The post object
+ * @param string $query The search query
+ */
 function ucsflibrary_search_filter_excerpt_content($content, $post = null, $query = null) {
 
     if (false === strpos($content, '<pre><code>')) {
