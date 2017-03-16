@@ -25,6 +25,7 @@ add_filter('relevanssi_pre_excerpt_content', 'ucsflibrary_search_filter_excerpt_
  * @param string $content The post content to filter
  * @param \WP_Post $post The post object
  * @param string $query The search query
+ * @return string The transformed content
  */
 function ucsflibrary_search_filter_excerpt_content($content, $post = null, $query = null) {
 
